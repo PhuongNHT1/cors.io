@@ -25,12 +25,13 @@ def index():
       headers = {}
       headers['Referer'] = MEMRISE_ENDPOINT
       if agent is not None:
-        headers['User-Agent'] = agent;
+        headers['User-Agent'] = agent
       if oauth is not None:
-        headers['Authorization'] = oauth;
+        headers['Authorization'] = oauth
       if csrftoken is not None:
-        headers['X-CSRFToken'] = csrftoken;
-        
+        headers['X-CSRFToken'] = csrftoken
+      print(headers)
+
       if request.method == "POST":
         user_data = {}
           
