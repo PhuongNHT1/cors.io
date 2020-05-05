@@ -7,6 +7,7 @@ from flask import Flask
 app = Flask(__name__)
 
 import requests
+MEMRISE_ENDPOINT = "https://www.memrise.com"
 
 @app.route('/', methods=("GET", "POST", "OPTIONS"))
 def index():
@@ -21,6 +22,7 @@ def index():
       ctype = request.headers.get('Content-Type')
 
       headers = {}
+      headers['Referer'] = MEMRISE_ENDPOINT
       if agent is not None:
         headers['User-Agent'] = agent;
       if oauth is not None:
