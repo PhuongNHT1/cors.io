@@ -1,5 +1,10 @@
+Fork this project for testing & studying
+Nothing to see here.
+
+
+
 # cors.io
-a simple cors proxy
+a simple cors proxy 
 
 Now fully flaskified, and ready for deployment on heroku.
 
