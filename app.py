@@ -32,8 +32,6 @@ def index():
       if csrftoken is not None:
         headers['X-CSRFToken'] = csrftoken
       headers['X-CSRFToken'] = cookies['csrftoken']
-      print(headers)
-
 
       if request.method == "POST":
         user_data = {}
@@ -46,9 +44,11 @@ def index():
         if 'multipart/form-data' in ctype:
           user_files = request.files.to_dict()
 
-          r = requests.post(qs, headers = headers, cookies=cookies, data = user_data, files = user_files)
+          r = requests.post(qs, headers = headers, data = user_data, files = user_files)
+          # r = requests.post(qs, headers = headers, cookies=cookies, data = user_data, files = user_files)
         else:
-          r = requests.post(qs, headers = headers, cookies=cookies, data = user_data)
+          r = requests.post(qs, headers = headers, data = user_data)
+          # r = requests.post(qs, headers = headers, cookies=cookies, data = user_data)
       elif request.method == "GET":
         r = requests.get(qs, headers = headers)
       elif request.method == "OPTIONS":
@@ -58,7 +58,7 @@ def index():
         we provide a request to ourself in order to return
         the correct headers with correct response code and data
         '''
-        r = requests.options(request.base_url, cookies=cookies, headers = headers)
+        r = requests.options(request.base_url, headers = headers)
 
       rt = r.text
     except:
