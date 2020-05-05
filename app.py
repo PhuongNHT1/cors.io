@@ -8,7 +8,6 @@ from flask import Flask
 app = Flask(__name__)
 
 import requests
-MEMRISE_ENDPOINT = "https://www.memrise.com"
 
 @app.route('/', methods=("GET", "POST", "OPTIONS"))
 def index():
@@ -24,14 +23,13 @@ def index():
       csrftoken = request.headers.get('X-CSRFToken')
       
       headers = {}
-      headers['Referer'] = MEMRISE_ENDPOINT
+      headers['Referer'] = request.base_url
       if agent is not None:
         headers['User-Agent'] = agent
       if oauth is not None:
         headers['Authorization'] = oauth
       if csrftoken is not None:
         headers['X-CSRFToken'] = csrftoken
-      headers['X-CSRFToken'] = cookies['csrftoken']
 
       if request.method == "POST":
         user_data = {}
