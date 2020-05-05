@@ -41,11 +41,8 @@ def index():
 
         if 'multipart/form-data' in ctype:
           user_files = request.files.to_dict()
-
-          # r = requests.post(qs, headers = headers, data = user_data, files = user_files)
           r = requests.post(qs, headers = headers, cookies=cookies, data = user_data, files = user_files)
         else:
-          # r = requests.post(qs, headers = headers, data = user_data)
           r = requests.post(qs, headers = headers, cookies=cookies, data = user_data)
       elif request.method == "GET":
         r = requests.get(qs, headers = headers)
