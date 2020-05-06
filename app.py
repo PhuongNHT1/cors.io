@@ -23,7 +23,7 @@ def index():
       csrftoken = request.headers.get('X-CSRFToken')
       
       headers = {}
-      headers['Referer'] = 'https://www.memrise.com'
+      headers['Referer'] = qs
       if agent is not None:
         headers['User-Agent'] = agent
       if oauth is not None:
