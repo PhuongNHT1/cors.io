@@ -1,6 +1,5 @@
 from flask import render_template
 from flask import request
-from variables import cookies
 
 import time
 import flask
@@ -12,7 +11,7 @@ import requests
 @app.route('/', methods=("GET", "POST", "OPTIONS"))
 def index():
   qs=request.query_string
-
+  cookies=request.cookies
   if qs:
     try:
       qs = qs.decode('utf8')
